@@ -9,8 +9,9 @@
        .colored-header {
       background-color: #BDB5D5; /* Set the background color */
        margin-bottom:1px;      /* Add spacing inside the section */
+       padding:30px 0px 0px 0px;
       width: 100%;         /* Section width */
-             
+           
        }
       .flex-container {
                 display: flex;
@@ -77,6 +78,7 @@
             line-height:1;
             border-right: 1px black solid;
             border-left: 1px black solid;
+            border-bottom:1px black solid;
             padding:5px;
       }
       .item-rectum{
@@ -84,6 +86,7 @@
       .flex-findingstomach{
       	display:flex;
             line-height:1;
+            border-top:1px black solid;
             border-right: 1px black solid;
             border-left: 1px black solid;
             padding:5px;
@@ -124,6 +127,7 @@
             line-height:1;
             border-right: 1px black solid;
             border-left: 1px black solid;
+            border-bottom:1px black solid;
             padding:5px;
       }
       .tcolon{
@@ -131,6 +135,7 @@
       .flex-findinghepatic-flexure{
             display:flex;
             line-height:1;
+            border-top:1px black solid;
             border-right: 1px black solid;
             border-left: 1px black solid;
             padding:5px;
@@ -421,8 +426,8 @@ storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/re
         const pdfContent = document.createElement('div');
          pdfContent.innerHTML = `
         <div class="colored-header">
-        <h1 style="text-align:center;line-height:1.2;">مستشفى الرافدين الاهلي</h1>
-            <h2 style="text-align: center;line-height:0;">OesophagoGastroDuodenoscopy Report</h2>
+        <h1 style="text-align:center;line-height:1.5;margin-top:10px;">مستشفى الرافدين الاهلي</h1>
+            <h2 style="text-align: center;line-height:1;">OesophagoGastroDuodenoscopy Report</h2>
       <p style= "text-align:center;line-height:0.5;">بغداد بارك السعدون مجاور مستشفى ابن النفيس</p>
   <hr>
           </div>
@@ -456,6 +461,7 @@ storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/re
           <div class="flex-findingrectum">
             <div class="item-rectum"><b>GOJ:</b> ${document.getElementById('rectum').value}</div>
           </div>
+          <p></p>
           <div class="flex-findingstomach">
             <div class="stomach"><b>Stomach:</b> ${document.getElementById('stomach').value}</div>
             </div>
@@ -471,6 +477,7 @@ storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/re
           <div class="flex-findingtransverse-colon">
             <div class="tcolon"><b>Pylorus:</b> ${document.getElementById('transverse-colon').value}</div>
           </div>
+          <p></p>
           <div class="flex-findinghepatic-flexure">
             <div class="hf"><b>Duodenum:</b> ${document.getElementById('hepatic-flexure').value}</div>
           </div>
