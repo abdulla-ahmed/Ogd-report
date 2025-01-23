@@ -11,7 +11,11 @@
        margin-bottom:1px;      /* Add spacing inside the section */
        padding:30px 0px 0px 0px;
       width: 100%;         /* Section width */
-           
+      border-top: 1px black solid; 
+      border-right: 1px black solid; 
+      border-left: 1px black solid; 
+      border-bottom: 1px black solid; 
+      box-sizing: border-box;
        }
       .flex-container {
                 display: flex;
@@ -408,7 +412,8 @@ function storeImageInLocalStorage(url, key) {
 
 storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/refs/heads/main/signature_scanner_31_29_24.png", 'sigimg');
 storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/refs/heads/main/signature_scanner_17_09_25.png", 'watermarkimg');
-
+storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/refs/heads/main/dr_hayder_kawaz.png", 'treeimg');
+   
     const imageUpload = document.getElementById('image-upload');
     const imagesContainer = document.getElementById('images-container');
 
@@ -428,10 +433,9 @@ storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/re
         <div class="colored-header">
         <h1 style="text-align:center;line-height:1.5;margin-top:10px;">مستشفى الرافدين الاهلي</h1>
             <h2 style="text-align: center;line-height:1;">OesophagoGastroDuodenoscopy Report</h2>
-      <p style= "text-align:center;line-height:0.5;">بغداد بارك السعدون مجاور مستشفى ابن النفيس</p>
-  <hr>
+      <p style= "text-align:center;line-height:0.5;"> بغداد بارك السعدون مجاور مستشفى ابن النفيس هاتف 07716431876</p>
           </div>
-            
+                <p style="line-height: 0.5; padding: 0; margin: 0;">&nbsp;</p>  
         
           <div class="flex-container">
             <p><b>Serial No.:</b>  ${document.getElementById('serial-no').value}</p>
@@ -526,7 +530,27 @@ if (sigimg) {
     formDiv.appendChild(pic);
     pdfContent.appendChild(formDiv); // Append the div containing the image inside the PDF content
 }
+const treeimg = localStorage.getItem('treeimg');
+if (treeimg) {
+    const formiDiv = document.createElement('div');
+    formiDiv.style.textAlign = 'center';
+    formiDiv.style.marginTop = '-450px';
+    formiDiv.style.position = 'absolute'; // Ensure it's within a relatively positioned container
+    
+    const pict = document.createElement('img'); // Corrected to 'img'
+    pict.src = treeimg;
+    pict.style.width = '100px'; // Adjust the size as needed
+    pict.style.position = 'relative'; // Adjust based on desired positioning
+    pict.style.top = '340px'; // Added 'px' for units
+    pict.style.left = '100%';
+    pict.style.transform = 'translateX(-100%)'; // Center the image horizontally
+    pict.style.zIndex = '4'; // Ensure correct layering
+    pict.style.opacity = '1'; 
+    pict.style.float = 'none';
 
+    formiDiv.appendChild(pict);
+    pdfContent.appendChild(formiDiv); // Append the div containing the image inside the PDF content
+}
 
        
    const watermarkimg = localStorage.getItem('watermarkimg');
