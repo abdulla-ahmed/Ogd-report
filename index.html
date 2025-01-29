@@ -9,7 +9,7 @@
        .colored-header {
       background-color: #BDB5D5; /* Set the background color */
        margin-bottom:1px;      /* Add spacing inside the section */
-       padding:10px 0px 0px 0px;
+       padding:5px 0px 0px 0px;
       width: 100%;         /* Section width */
       border-top: 1px black solid; 
       border-right: 1px black solid; 
@@ -431,8 +431,8 @@ storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/re
         const pdfContent = document.createElement('div');
          pdfContent.innerHTML = `
         <div class="colored-header">
-        <h1 style="text-align:center;line-height:1.2;margin-top:8px;">مستشفى الرافدين الاهلي</h1>
-            <h2 style="text-align: center;line-height:0.75;">OesophagoGastroDuodenoscopy Report</h2>
+        <h1 style="text-align:center;line-height:1;margin-top:5px;">مستشفى الرافدين الاهلي</h1>
+            <h2 style="text-align: center;line-height:0.7;">OesophagoGastroDuodenoscopy Report</h2>
       <p style= "text-align:center;line-height:0.5;"> بغداد بارك السعدون مجاور مستشفى ابن النفيس هاتف 07716431876</p>
           </div>
                 <p style="line-height: 0.5; padding: 0; margin: 0;">&nbsp;</p>  
@@ -491,11 +491,11 @@ storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/re
           <div class="flex-findingcecum-ileum">
             <div class="c&i"><b>2nd part of Duodenum:</b> ${document.getElementById('cecum-ileum').value}</div>
           </div>
-          <p></p>
+          <p style="line-height: 0.25; padding: 0; margin: 0;">&nbsp;</p>
            <div class="flex-biopsy">
           <div class="biopsy"><b>Biopsy:</b> ${document.getElementById('biopsy').value}</div>
           </div>
-          <p></p>
+          <p style="line-height: 0.25; padding: 0; margin: 0;">&nbsp;</p>
             <div class="flex-recommendation">
             <div class="rec"><b>Recommendation and Notes:</b> ${document.getElementById('recommendation').value}</div>
             </div>
