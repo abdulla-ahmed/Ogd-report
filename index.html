@@ -431,7 +431,7 @@ storeImageInLocalStorage("https://raw.githubusercontent.com/abdulla-ahmed/pic/re
         const pdfContent = document.createElement('div');
          pdfContent.innerHTML = `
         <div class="colored-header">
-        <h1 style="text-align:center;line-height:1.5;margin-top:10px;">مستشفى الرافدين الاهلي</h1>
+        <h1 style="text-align:center;line-height:1.3;margin-top:8px;">مستشفى الرافدين الاهلي</h1>
             <h2 style="text-align: center;line-height:1;">OesophagoGastroDuodenoscopy Report</h2>
       <p style= "text-align:center;line-height:0.5;"> بغداد بارك السعدون مجاور مستشفى ابن النفيس هاتف 07716431876</p>
           </div>
@@ -622,7 +622,7 @@ if (watermarkimg) {
         // Creating PDF with header and footer
         html2pdf()
             .set({
-                margin: [20, 20, 20, 20],  // Increased margin all around
+                margin: [10, 20, 20, 20],  // Increased margin all around
                 filename: `OGD_Report_${serialNumber}.pdf`,
                 html2canvas: { scale: 2 },
                 jsPDF: {
