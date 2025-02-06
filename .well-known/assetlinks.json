@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.abdulla_ahmed.ogdr",
+        "sha256_cert_fingerprints": ["87:B0:E6:DD:B3:EC:13:A7:62:01:76:A2:43:9E:21:30:54:D3:F5:60:A5:57:2B:68:E3:20:EC:5B:F0:50:3A:54"]
+      }
+    }]
