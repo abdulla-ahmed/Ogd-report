@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGD Report R. Hospital</title>
+       <link rel="manifest" href="manifest.json">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+   
+   <style>
+       .colored-header {
+      background-color: #BDB5D5; /* Set the background color */
+       margin-bottom:1px;      /* Add spacing inside the section */
+       padding:5px 0px 0px 0px;
+      width: 100%;         /* Section width */
+      border-top: 1px black solid; 
+      border-right: 1px black solid; 
+      border-left: 1px black solid; 
+      border-bottom: 1px black solid; 
+      box-sizing: border-box;
+       }
+      .flex-container {
+                display: flex;
+                 gap: 320px; /* Adjust spacing between paragraphs */
+                  background-color:lightgray;
+        line-height:0;
+          padding:5px;
+        border: 1px black solid;
+      }
+      .flex-infopt{
+            display:flex;
+            line-height:1.5;
+            border-top: 1px black solid;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+      }
+      .item-namept {
+            margin-right:120px;
+      }
+      .item-agept {
+            margin-right:50px;
+      }
+      .item-sexpt {
+      }
+      .flex-2info{
+            display:flex;
+            line-height:1;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+      }
+      .item-Cc {
+            margin-right:80px;
+      }
+      .item-Ref {
+            
+      }
+      .flex-anesthesia{
+            display:flex;
+            line-height:1;
+            border-bottom: 1px black solid;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+            
+      }
+            .item-anesthesia {
+            }
+            
+      .flex-findingpr{
+            display:flex;
+            line-height:1;
+            border-top:1px black solid;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+      }
+      .item-pr {
+            
+      }
+      .flex-findingrectum{
+            display:flex;
+            line-height:1;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            border-bottom:1px black solid;
+            padding:5px;
+      }
+      .item-rectum{
+      }
+      .flex-findingstomach{
+      	display:flex;
+            line-height:1;
+            border-top:1px black solid;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+      }
+      .stomach{
+      	}
+      .flex-findingsigmoid{
+            display:flex;
+            line-height:1;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+      }
+      .sigmoid{
+      }
+      
+      .flex-findingdescending-colon{
+            display:flex;
+            line-height:1;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+      }
+      .dcolon{
+      }
+      
+      .flex-findingsplenic-flexure{
+            display:flex;
+            line-height:1;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+      }
+      .sf{
+      }
+      .flex-findingtransverse-colon{
+            display:flex;
+            line-height:1;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            border-bottom:1px black solid;
+            padding:5px;
+      }
+      .tcolon{
+      }
+      .flex-findinghepatic-flexure{
+            display:flex;
+            line-height:1;
+            border-top:1px black solid;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+      }
+      .hf{
+      }
+      .flex-findingascending-colon{
+            display:flex;
+            line-height:1;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            padding:5px;
+      }
+      .acolon{
+      }
+      .flex-findingcecum-ileum{
+            display:flex;
+            line-height:1;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            border-bottom: 1px black solid;
+            padding:5px;
+      }
+      .c&i{
+      }
+      .flex-biopsy{
+            display:flex;
+            line-height:1;
+            border-top:1px black solid;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            border-bottom: 1px black solid;
+            padding:5px;
+      }
+      .biopsy{
+      }
+      .flex-recommendation{
+            display:flex;
+            line-height:1;
+            border-top:1px black solid;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            border-bottom: 1px black solid;
+            padding:5px;
+      }
+      .rec{
+      }
+      .flex-provisional-diagnosis{
+            display:flex;
+            line-height:1;
+            border-top:1px black solid;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+            border-bottom: 1px black solid;
+            padding:5px;
+      }
+      .pd{
+      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            
+        }
+        
+      #animation-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+      
+        .container {
+           display: none;
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #images-container {
+        display: flex;
+        flex-wrap: wrap; /* Allows wrapping of images into multiple rows */
+        justify-content: space-between; /* Ensure images are spaced evenly */
+        margin-top: 20px;
+    }
+
+    #images-container img {
+        width: 48%;  /* Width to fit 2 images per row */
+        height: 140px; /* Fixed height for consistency */
+        object-fit: cover; /* Ensures images maintain their aspect ratio */
+        margin-bottom: 20px; /* Space between rows of images */
+        border: none; /* Removes any borders around images */
+        padding: 0; /* Ensures no padding is added */
+    }
+        .button-group {
+            text-align: right;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #007BFF;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #6C757D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+	   <div id="animation-container"></div>
+    <div class="container"style="display: none">
+        <h2 style="text-align: center;">OesophagoGastroDuodenoscopy Report</h2>
+        <form id="data-form">
+            <!-- Basic Patient Information -->
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="text" id="date" >
+            </div>
+            <div class="form-group">
+                <label for="serial-no">Serial No.</label>
+                <input type="text" id="serial-no" >
+            </div>
+            <div class="form-group">
+                <label for="patient-name">Patient Name</label>
+                <input type="text" id="patient-name">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age">
+            </div>
+            <div class="form-group">
+                <label for="sex">Sex</label>
+                <select id="sex">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="doctor-referral">Referred By</label>
+                <input type="text" id="doctor-referral">
+            </div>
+            <div class="form-group">
+                <label for="chief-complain">Chief Complain</label>
+                <textarea id="chief-complain"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="anesthesia">Type of Anesthesia</label>
+                <input list="anesthesia-options" id="anesthesia" placeholder="Write or select" />
+                <datalist id="anesthesia-options">
+                <option value="Local anesthesia (xylocaine ointment & spray)">
+                <option value="GA +Mask">
+                <option value="GA +Tube">
+                </datalist>
+                </div>
+            <!-- Procedure Findings -->
+            <h3>Procedure Findings</h3>
+            <div class="form-group">
+                <label for="pr">Oesophagus</label>
+                <input list="pr-options" id="pr" placeholder="Write or select" />
+                <datalist id="pr-options">
+                <option value="normal Esophageal mucosa no mass or ulceration seen">
+                </datalist>
+                </div>
+            <div class="form-group">
+                <label for="rectum">GOJ(Cardia)</label>
+                <textarea id="rectum"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="stomach">Stomach</label>
+                <textarea id="stomach"></textarea>
+            </div>   
+            <div class="form-group">
+                <label for="sigmoid">Fundus of Stomach</label>
+                <textarea id="sigmoid"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="descending-colon">Body of Stomach</label>
+                <textarea id="descending-colon"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="splenic-flexure">Antrum of Stomach</label>
+                <textarea id="splenic-flexure"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="transverse-colon">Pylorus</label>
+                <textarea id="transverse-colon"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="hepatic-flexure">Duodenum</label>
+                <textarea id="hepatic-flexure"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="ascending-colon">1st part of Duodenum</label>
+                <textarea id="ascending-colon"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cecum-ileum">2nd part of Duodenum</label>
+                <textarea id="cecum-ileum"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="biopsy">Biopsy</label>
+                <textarea id="biopsy"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="recommendation">Recommendation and Notes</label>
+                <textarea id="recommendation"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="provisional-diagnosis">Provisional Diagnosis</label>
+                <textarea id="provisional-diagnosis"></textarea>
+            </div>
+            <!-- Image Upload Section -->
+            <div class="form-group">
+                <label for="image-upload">Upload Images</label>
+                <input type="file" id="image-upload" multiple accept="image/*">
+                <div id="images-container"></div>
+            </div>
+            <div class="button-group">
+                <button type="button" class="btn-primary" onclick="generatePDF()">Download PDF</button>
+                <button type="reset" class="btn-secondary">Reset</button>
+            </div>
+            
+        </form>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js"></script>
+  <script src="app.js"></script>
+  <script> if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
+}
+  </script>
+
+
+ <script>
+    
+    // Retrieve the current serial number from localStorage or initialize it to 1
+    let serialNumber = parseInt(localStorage.getItem('pdfSerialNo')) || 1;
+
+    // Set the initial serial number in the Serial No. input field
+    document.getElementById('date').value = new Date().toLocaleDateString();
+    document.getElementById('serial-no').value = `OGD-${serialNumber}`;
+
+    document.getElementById('date').value = new Date().toLocaleDateString();
+    document.getElementById('serial-no').value = `OGD-${serialNumber}`;
+
+function storeImageInLocalStorage(url, key) {
+    if (!localStorage.getItem(key)) {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    localStorage.setItem(key, reader.result); // Base64 representation
+                };
+                reader.readAsDataURL(blob);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+}
+
+storeImageInLocalStorage("/Ogd-report/pic/signature_hayder.png", 'sigimgR');
+storeImageInLocalStorage("/Ogd-report/pic/rafedin.png", 'watermarkimgR');
+storeImageInLocalStorage("/Ogd-report/pic/dr_tree.png", 'treeimgR');
+   
+    const imageUpload = document.getElementById('image-upload');
+    const imagesContainer = document.getElementById('images-container');
+
+    imageUpload.addEventListener('change', function () {
+        imagesContainer.innerHTML = '';
+        Array.from(imageUpload.files).forEach(file => {
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            imagesContainer.appendChild(img);
+        });
+    });
+
+    function generatePDF() {
+    	
+        const pdfContent = document.createElement('div');
+         pdfContent.innerHTML = `
+        <div class="colored-header">
+        <h1 style="text-align:center;line-height:1;margin-top:5px;">مستشفى الرافدين الاهلي</h1>
+            <h2 style="text-align: center;line-height:0.7;">OesophagoGastroDuodenoscopy Report</h2>
+      <p style= "text-align:center;line-height:0.5;"> بغداد بارك السعدون مجاور مستشفى ابن النفيس هاتف 07716431876</p>
+          </div>
+                <p style="line-height: 0.5; padding: 0; margin: 0;">&nbsp;</p>  
+        
+          <div class="flex-container">
+            <p><b>Serial No.:</b>  ${document.getElementById('serial-no').value}</p>
+            <p><b>Date:</b> ${document.getElementById('date').value}</p>
+          </div>
+        <hr>
+            <div class="flex-infopt">
+            <div class="item-namept"><b>Patient Name:</b> ${document.getElementById('patient-name').value}</div>
+            <div class= "item-agept"><b>Age:</b> ${document.getElementById('age').value}</div>
+            <div class= "item-sex"><b>Sex:</b> ${document.getElementById('sex').value}</div>
+          </div>
+          
+            <div class="flex-2info">
+            <div class="item-Cc"><b>Chief Complain:</b> ${document.getElementById('chief-complain').value}</div>
+            <div class="item-Ref"><b>Referred by:</b> ${document.getElementById('doctor-referral').value}</div>
+          </div>
+          <div class="flex-anesthesia">
+          <div class="item-anesthesia"><b>Anesthesia:</b> ${document.getElementById('anesthesia').value}
+          </div>
+          </div>
+          
+          <h2 style="line-height:0.5;text-weight:bold;line-height:0.5;">Procedure Findings</h2>
+           
+          <div class="flex-findingpr">
+            <div class="item-pr"><b>Oesophagus:</b> ${document.getElementById('pr').value}</div>
+           </div>
+          <div class="flex-findingrectum">
+            <div class="item-rectum"><b>GOJ:</b> ${document.getElementById('rectum').value}</div>
+          </div>
+          <p style="line-height: 0.25; padding: 0; margin: 0;">&nbsp;</p>
+          <div class="flex-findingstomach">
+            <div class="stomach"><b>Stomach:</b> ${document.getElementById('stomach').value}</div>
+            </div>
+          <div class="flex-findingsigmoid">
+            <div class="sigmoid"><b>Fundus of Stomach:</b> ${document.getElementById('sigmoid').value}</div>
+          </div>
+          <div class="flex-findingdescending-colon">
+            <div class="dcolon"><b>Body of Stomach:</b> ${document.getElementById('descending-colon').value}</div>
+          </div>
+          <div class="flex-findingsplenic-flexure">
+            <div class="sf"><b>Antrum of Stomach:</b> ${document.getElementById('splenic-flexure').value}</div>
+          </div>
+          <div class="flex-findingtransverse-colon">
+            <div class="tcolon"><b>Pylorus:</b> ${document.getElementById('transverse-colon').value}</div>
+          </div>
+          <p style="line-height: 0.25; padding: 0; margin: 0;">&nbsp;</p>
+          <div class="flex-findinghepatic-flexure">
+            <div class="hf"><b>Duodenum:</b> ${document.getElementById('hepatic-flexure').value}</div>
+          </div>
+          <div class="flex-findingascending-colon">
+            <div class="acolon"><b>1st part of Duodenum:</b> ${document.getElementById('ascending-colon').value}</div>
+           </div>
+          <div class="flex-findingcecum-ileum">
+            <div class="c&i"><b>2nd part of Duodenum:</b> ${document.getElementById('cecum-ileum').value}</div>
+          </div>
+          <p style="line-height: 0.25; padding: 0; margin: 0;">&nbsp;</p>
+           <div class="flex-biopsy">
+          <div class="biopsy"><b>Biopsy:</b> ${document.getElementById('biopsy').value}</div>
+          </div>
+          <p style="line-height: 0.25; padding: 0; margin: 0;">&nbsp;</p>
+            <div class="flex-recommendation">
+            <div class="rec"><b>Recommendation and Notes:</b> ${document.getElementById('recommendation').value}</div>
+            </div>
+          <p></p>
+          <div class="flex-provisional-diagnosis">
+          <div class="pd"><b>Provisional Diagnosis:</b> ${document.getElementById('provisional-diagnosis').value}</div>
+          </div>
+<p style="text-align:right;marginTop:'20px';padding:40px 45px 0px 40px;font-weight: bold;">الجراح الاستشاري&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
+<p style="text-align:right;marginTop:'0px';line-height:0;padding:0px 40px ;font-weight: bold;font-size:23px;">الدكتور حيدر الكواز</p>
+
+
+        `;
+        
+ const sigimgR = localStorage.getItem('sigimgR');
+if (sigimgR) {
+    const formDiv = document.createElement('div');
+    formDiv.style.textAlign = 'center';
+    formDiv.style.marginTop = '-450px';
+    formDiv.style.position = 'absolute'; // Ensure it's within a relatively positioned container
+    
+    const pic = document.createElement('img'); // Corrected to 'img'
+    pic.src = sigimgR;
+    pic.style.width = '150px'; // Adjust the size as needed
+    pic.style.position = 'relative'; // Adjust based on desired positioning
+    pic.style.top = '330px'; // Added 'px' for units
+    pic.style.left = '400%';
+    pic.style.transform = 'translateX(-100%)'; // Center the image horizontally
+    pic.style.zIndex = '3'; // Ensure correct layering
+    pic.style.opacity = '1'; 
+    pic.style.float = 'none';
+
+    formDiv.appendChild(pic);
+    pdfContent.appendChild(formDiv); // Append the div containing the image inside the PDF content
+}
+const treeimgR = localStorage.getItem('treeimgR');
+if (treeimgR) {
+    const formiDiv = document.createElement('div');
+    formiDiv.style.textAlign = 'center';
+    formiDiv.style.marginTop = '-450px';
+    formiDiv.style.position = 'absolute'; // Ensure it's within a relatively positioned container
+    
+    const pict = document.createElement('img'); // Corrected to 'img'
+    pict.src = treeimgR;
+    pict.style.width = '100px'; // Adjust the size as needed
+    pict.style.position = 'relative'; // Adjust based on desired positioning
+    pict.style.top = '340px'; // Added 'px' for units
+    pict.style.left = '100%';
+    pict.style.transform = 'translateX(-100%)'; // Center the image horizontally
+    pict.style.zIndex = '4'; // Ensure correct layering
+    pict.style.opacity = '1'; 
+    pict.style.float = 'none';
+
+    formiDiv.appendChild(pict);
+    pdfContent.appendChild(formiDiv); // Append the div containing the image inside the PDF content
+}
+
+       
+   const watermarkimgR = localStorage.getItem('watermarkimgR');
+if (watermarkimgR) {
+    const fromDiv = document.createElement('div');
+    fromDiv.style.textAlign = 'center';
+    fromDiv.style.marginTop = '-450px';
+    fromDiv.style.position = 'absolute'; // Ensure it's within a relatively positioned container
+    
+    const img = document.createElement('img'); // Correct usage of 'img'
+    img.src = watermarkimgR;
+    img.style.width = '450px'; // Adjust the size as needed
+    img.style.position = 'relative'; // Adjust based on desired positioning
+    img.style.top = '-150px'; // Added 'px' for units
+    img.style.left = '120%';
+    img.style.transform = 'translateX(-100%)'; // Center the image horizontally
+    img.style.zIndex = '2'; // Ensure correct layering
+    img.style.opacity = '0.12'; 
+    img.style.float = 'none';
+
+    fromDiv.appendChild(img);
+    pdfContent.appendChild(fromDiv); // Append the div containing the image inside the PDF content
+}
+
+
+        const images = Array.from(document.querySelectorAll('#images-container img'));
+        if (images.length) {
+            let imagePage = document.createElement('div');
+            imagePage.style.pageBreakBefore = 'always';  // Ensure images start from the second page
+            imagePage.style.display = 'grid';
+            
+            imagePage.style.gridTemplateColumns = '1fr 1fr';  // 2 columns
+            imagePage.style.gridTemplateRows = 'repeat(4, 1fr)';  // 4 rows
+            imagePage.style.gap = '30px';  // Increased gap between images for wider margin
+
+            // Set fixed image size for each image (58px width and 86px height)
+            images.forEach((img, index) => {
+                const imgWrapper = document.createElement('div');
+                imgWrapper.style.width = '100%';
+                imgWrapper.style.height = '100%';
+                imgWrapper.style.paddingTop = '5px'; 
+
+                const clonedImg = img.cloneNode();
+                clonedImg.style.width = '300px';  // Set image width to 58px
+                clonedImg.style.height = '200px';  // Set image height to 86px
+                clonedImg.style.zIndex = '-1';
+                imgWrapper.appendChild(clonedImg);
+                imagePage.appendChild(imgWrapper);
+
+                // If 8 images are added, push the page and reset for the next set of 8 images
+                if ((index + 1) % 8 === 0) {
+                    pdfContent.appendChild(imagePage);
+                    
+                    imagePage = document.createElement('div');
+                    imagePage.style.pageBreakBefore = 'always';
+                    imagePage.style.display = 'grid';
+                    imagePage.style.gridTemplateColumns = '1fr 1fr';
+                    imagePage.style.gridTemplateRows = 'repeat(4, 1fr)';
+                    imagePage.style.gap = '30px';  // Same gap for consistency
+                }
+                
+            });
+
+            pdfContent.appendChild(imagePage);  // Add the last set of images if less than 8
+        }
+        
+
+
+        // Creating PDF with header and footer
+        html2pdf()
+            .set({
+                margin: [15, 20, 10, 20],  // Increased margin all around
+                filename: `OGD_Report_${serialNumber}.pdf`,
+                html2canvas: { scale: 2 },
+                jsPDF: {
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4',
+                    header: function (data) {
+                        return {
+                            text: 'Colonoscopy Report ',
+                            align: 'center',
+                            fontSize: 12
+                        };
+                    },
+                    footer: function (data) {
+                        return {
+                            text: `Page ${data.pageNumber}`,
+                            align: 'center',
+                            fontSize: 10
+                        };
+                    }
+                }
+            })
+            .from(pdfContent)
+            .save()
+            .then(() => {
+                serialNumber++;
+                localStorage.setItem('pdfSerialNo', serialNumber);
+                document.getElementById('serial-no').value = `OGD-${serialNumber}`;
+            });
+    }
+</script>
+</body>
+</html>
